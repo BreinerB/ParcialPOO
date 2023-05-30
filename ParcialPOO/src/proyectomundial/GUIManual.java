@@ -28,6 +28,7 @@ import proyectomundial.model.Seleccion;
 public class GUIManual extends JFrame {
 
     SeleccionDAO seleccionDAO = new SeleccionDAO();
+    //Comentario
     
     
     // Matrix que permite almancenar la información de las selecciones futbol cargadas
@@ -59,6 +60,9 @@ public class GUIManual extends JFrame {
     
     private JPanel jPanelMenuDashboardRes;
     private JLabel btnDashboardRes;
+    
+    private JPanel jPanelOrigin;
+    private JLabel btnOrigin;
         
     // Elementos de panel de contenido
     private JPanel jPanelRight;
@@ -112,6 +116,9 @@ public class GUIManual extends JFrame {
         jPanelMenuDashboardRes = new JPanel();
         btnDashboardRes = new JLabel();
         
+        jPanelOrigin = new JPanel();
+        btnOrigin = new JLabel();
+        
         // Pinta el logo de la aplicación
         pintarLogo();
         
@@ -129,6 +136,9 @@ public class GUIManual extends JFrame {
         
         // Pinta la opción de Menú del dahboard de resultados
         pintarMenuDashboardRes();
+        
+        pintarOrigin();
+
         
         // Pinta y ajuste diseño del contenedor del panel izquierdo
         pintarPanelIzquierdo();
@@ -409,7 +419,49 @@ public class GUIManual extends JFrame {
         jPanelMain.revalidate();        
     }
     
+private void pintarOrigin() {
+        btnOrigin.setIcon(new ImageIcon(getClass().getResource("/resources/icons/dashboard_resultados.png")));
+        btnOrigin.setText("Origin");
+        btnOrigin.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JLabel vacioOrigin = new JLabel();
+        jPanelOrigin.setBackground(new java.awt.Color(17, 41, 63));
+        jPanelOrigin.setPreferredSize((new java.awt.Dimension(220, 35)));
+        jPanelOrigin.setLayout(new BorderLayout(15, 0));
+        jPanelOrigin.add(vacioOrigin, BorderLayout.WEST);
+        jPanelOrigin.add(btnOrigin, BorderLayout.CENTER);
+        jPanelMenu.add(jPanelOrigin);
+        
+        btnOrigin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                System.out.println("Origin");
+                accionOrigin();
+            }
+        });
+    }
     
+    
+    
+    /**
+     * TRABAJO DEL ESTUDIANTE
+     * Se debe módificar este método para poder calcular y pintar las diferentes informaciones que son solicitadas
+     * Revise el proceso que se siguen en los demás métodos para poder actualizar la información de los paneles
+     */
+    private void accionOrigin() {
+        
+        jLabelTop.setText ("registro");
+        
+        String User2= JOptionPane.showInputDialog("ingrese usuario");
+        String contraseña= JOptionPane.showInputDialog("ingrese contraseña");
+        
+        if ("pepito".equals(User2)){
+            if ("buenaSuerte".equals(contraseña)){
+                this.haySesion = true;
+            }
+        }
+
+        
+    }   
     
     /**
      * Función que se encarga de ajustar los elementos gráficos que componente la opción de navegación de Dashboard de Resultados
